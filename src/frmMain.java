@@ -451,11 +451,7 @@ public class frmMain extends javax.swing.JFrame {
     }//GEN-LAST:event_HasilMouseClicked
 
     private void Save1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Save1ActionPerformed
-        if("".equals(No.getText()) || "".equals(Nama.getText()) || "".equals(Makanan.getSelectedItem())
-            || "".equals(Minuman.getSelectedItem()) || "".equals(Total.getText())) {
-            JOptionPane.showMessageDialog(this, "Harap Lengkapi Data", "Error", JOptionPane.WARNING_MESSAGE);
-        } else {
-
+        
             String makan = Makanan.getSelectedItem().toString();
             String minum = Minuman.getSelectedItem().toString();
 
@@ -480,7 +476,6 @@ public class frmMain extends javax.swing.JFrame {
             }else{
                 JOptionPane.showMessageDialog(this, "Data gagal ditambah", "Sukses", JOptionPane.WARNING_MESSAGE);
             }
-        }
 
         // TODO add your handling code here:
     }//GEN-LAST:event_Save1ActionPerformed
@@ -563,6 +558,12 @@ public class frmMain extends javax.swing.JFrame {
     }//GEN-LAST:event_TotalActionPerformed
 
     private void totalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_totalActionPerformed
+        if("".equals(No.getText()) || "".equals(Nama.getText()) || "".equals(Makanan.getSelectedItem())
+                || "".equals(Mkn.getText()) || "".equals(Mnm.getText()) || "".equals(Mknttl.getText())
+                || "".equals(Mnmttl.getText()) || "".equals(Minuman.getSelectedItem()) || "".equals(Total.getText())) {
+            JOptionPane.showMessageDialog(this, "Harap Lengkapi Data", "Error", JOptionPane.WARNING_MESSAGE);
+        } else {
+
         int hrgmkn = Integer.parseInt(String.valueOf(Mkn.getText()));
         int hrgmnm = Integer.parseInt(String.valueOf(Mnm.getText()));
         int tlmkn = Integer.parseInt(String.valueOf(Mknttl.getText()));
@@ -579,8 +580,7 @@ public class frmMain extends javax.swing.JFrame {
                     + "dari "+ttl+" menjadi Rp "+ttl * 90/100);
         }
         
-
-        Total.setText(String.valueOf(ttld));
+        Total.setText(String.valueOf(ttld));}
     }//GEN-LAST:event_totalActionPerformed
 
     private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
