@@ -31,11 +31,12 @@ public class frmMain extends javax.swing.JFrame {
     /**
      * Creates new form frmMain
      */
-    public frmMain() {
+    public frmMain(String mj) {
         initComponents();
         
         setTanggal() ;
         setJam() ;
+        Kasir.setText(mj);
     }
 
     /**
@@ -52,14 +53,17 @@ public class frmMain extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         Hasil = new javax.swing.JTable();
         jPanel5 = new javax.swing.JPanel();
-        Save1 = new javax.swing.JButton();
+        Save = new javax.swing.JButton();
         Clear = new javax.swing.JButton();
         refresh = new javax.swing.JButton();
         Delete = new javax.swing.JButton();
         print = new javax.swing.JButton();
         exit = new javax.swing.JButton();
+        pencarian = new com.toedter.calendar.JDateChooser();
+        Search = new javax.swing.JButton();
+        jLabel34 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        No = new javax.swing.JTextField();
+        NOP = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
         Nama = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
@@ -67,13 +71,13 @@ public class frmMain extends javax.swing.JFrame {
         Makanan = new javax.swing.JComboBox();
         Mkn = new javax.swing.JTextField();
         Mknttl = new javax.swing.JTextField();
-        jLabel34 = new javax.swing.JLabel();
         Minuman = new javax.swing.JComboBox();
         Mnmttl = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
         Mnm = new javax.swing.JTextField();
         Total = new javax.swing.JTextField();
         total = new javax.swing.JButton();
+        jLabel35 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
@@ -93,12 +97,13 @@ public class frmMain extends javax.swing.JFrame {
         jLabel18 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        kasir = new javax.swing.JLabel();
-        tanggal = new javax.swing.JLabel();
+        Tgl = new javax.swing.JLabel();
         waktu = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
+        kasir = new javax.swing.JLabel();
+        Kasir = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -112,13 +117,13 @@ public class frmMain extends javax.swing.JFrame {
 
         Hasil.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "No_Pemesan", "Nama", "Makanan", "Minuman", "Total"
+                "No_Pemesan", "tgl_transaksi", "kasir", "Nama", "Makanan", "Minuman", "Total"
             }
         ));
         Hasil.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -129,23 +134,23 @@ public class frmMain extends javax.swing.JFrame {
         jScrollPane1.setViewportView(Hasil);
 
         jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(10, 20, 960, 240);
+        jScrollPane1.setBounds(10, 20, 960, 220);
 
         jPanel8.add(jPanel1);
-        jPanel1.setBounds(10, 340, 980, 270);
+        jPanel1.setBounds(10, 340, 980, 250);
 
         jPanel5.setBackground(new java.awt.Color(204, 204, 204));
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Dll"));
         jPanel5.setLayout(null);
 
-        Save1.setText("SAVE");
-        Save1.addActionListener(new java.awt.event.ActionListener() {
+        Save.setText("SAVE");
+        Save.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Save1ActionPerformed(evt);
+                SaveActionPerformed(evt);
             }
         });
-        jPanel5.add(Save1);
-        Save1.setBounds(40, 40, 90, 30);
+        jPanel5.add(Save);
+        Save.setBounds(50, 120, 90, 30);
 
         Clear.setText("CLEAR");
         Clear.addActionListener(new java.awt.event.ActionListener() {
@@ -154,7 +159,7 @@ public class frmMain extends javax.swing.JFrame {
             }
         });
         jPanel5.add(Clear);
-        Clear.setBounds(150, 40, 90, 30);
+        Clear.setBounds(160, 120, 90, 30);
 
         refresh.setText("REFRESH");
         refresh.addActionListener(new java.awt.event.ActionListener() {
@@ -163,7 +168,7 @@ public class frmMain extends javax.swing.JFrame {
             }
         });
         jPanel5.add(refresh);
-        refresh.setBounds(150, 90, 90, 30);
+        refresh.setBounds(160, 160, 90, 30);
 
         Delete.setText("DELETE");
         Delete.addActionListener(new java.awt.event.ActionListener() {
@@ -172,7 +177,7 @@ public class frmMain extends javax.swing.JFrame {
             }
         });
         jPanel5.add(Delete);
-        Delete.setBounds(40, 90, 90, 30);
+        Delete.setBounds(50, 160, 90, 30);
 
         print.setText("PRINT");
         print.addActionListener(new java.awt.event.ActionListener() {
@@ -181,7 +186,7 @@ public class frmMain extends javax.swing.JFrame {
             }
         });
         jPanel5.add(print);
-        print.setBounds(40, 140, 90, 30);
+        print.setBounds(50, 200, 90, 30);
 
         exit.setText("EXIT");
         exit.addActionListener(new java.awt.event.ActionListener() {
@@ -190,7 +195,23 @@ public class frmMain extends javax.swing.JFrame {
             }
         });
         jPanel5.add(exit);
-        exit.setBounds(150, 140, 90, 30);
+        exit.setBounds(160, 200, 90, 30);
+        jPanel5.add(pencarian);
+        pencarian.setBounds(50, 40, 200, 30);
+
+        Search.setText("SEARCH");
+        Search.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SearchActionPerformed(evt);
+            }
+        });
+        jPanel5.add(Search);
+        Search.setBounds(110, 80, 90, 30);
+
+        jLabel34.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel34.setText("Pencarian Tanggal Transaksi");
+        jPanel5.add(jLabel34);
+        jLabel34.setBounds(60, 20, 200, 20);
 
         jPanel8.add(jPanel5);
         jPanel5.setBounds(690, 90, 300, 240);
@@ -199,16 +220,16 @@ public class frmMain extends javax.swing.JFrame {
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Pesan", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
         jPanel3.setLayout(null);
 
-        No.addActionListener(new java.awt.event.ActionListener() {
+        NOP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NoActionPerformed(evt);
+                NOPActionPerformed(evt);
             }
         });
-        jPanel3.add(No);
-        No.setBounds(20, 40, 130, 30);
+        jPanel3.add(NOP);
+        NOP.setBounds(20, 40, 130, 30);
 
         jLabel15.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel15.setText("No.Pemesan");
+        jLabel15.setText("No Pemesan");
         jPanel3.add(jLabel15);
         jLabel15.setBounds(20, 20, 130, 20);
 
@@ -249,11 +270,6 @@ public class frmMain extends javax.swing.JFrame {
         });
         jPanel3.add(Mknttl);
         Mknttl.setBounds(160, 160, 30, 30);
-
-        jLabel34.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel34.setText("Minuman ");
-        jPanel3.add(jLabel34);
-        jLabel34.setBounds(200, 20, 130, 20);
 
         Minuman.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--Pilih Minuman--", "Es Teh", "Air Mineral", "Es Jeruk" }));
         Minuman.addActionListener(new java.awt.event.ActionListener() {
@@ -297,6 +313,11 @@ public class frmMain extends javax.swing.JFrame {
         });
         jPanel3.add(total);
         total.setBounds(230, 190, 90, 30);
+
+        jLabel35.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel35.setText("Minuman ");
+        jPanel3.add(jLabel35);
+        jLabel35.setBounds(200, 20, 130, 20);
 
         jPanel8.add(jPanel3);
         jPanel3.setBounds(280, 90, 400, 240);
@@ -382,13 +403,9 @@ public class frmMain extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 102, 0));
         jPanel2.setLayout(null);
 
-        kasir.setText("Miftah");
-        jPanel2.add(kasir);
-        kasir.setBounds(650, 20, 80, 30);
-
-        tanggal.setText("Tanggal");
-        jPanel2.add(tanggal);
-        tanggal.setBounds(740, 0, 190, 30);
+        Tgl.setText("Tanggal");
+        jPanel2.add(Tgl);
+        Tgl.setBounds(740, 0, 190, 30);
 
         waktu.setText("Waktu");
         jPanel2.add(waktu);
@@ -396,9 +413,9 @@ public class frmMain extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Viner Hand ITC", 1, 48)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel3.setText("KEDAI MJ");
+        jLabel3.setText("KEDAI BAMBU");
         jPanel2.add(jLabel3);
-        jLabel3.setBounds(270, 0, 310, 70);
+        jLabel3.setBounds(220, 10, 470, 70);
 
         jPanel6.setLayout(null);
         jPanel2.add(jPanel6);
@@ -409,13 +426,22 @@ public class frmMain extends javax.swing.JFrame {
         jPanel2.add(jPanel7);
         jPanel7.setBounds(-10, -20, 0, 0);
 
+        kasir.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        kasir.setText("KASIR  :");
+        jPanel2.add(kasir);
+        kasir.setBounds(20, 30, 50, 17);
+
+        Kasir.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jPanel2.add(Kasir);
+        Kasir.setBounds(80, 20, 130, 30);
+
         jPanel8.add(jPanel2);
         jPanel2.setBounds(10, 10, 980, 70);
 
         getContentPane().add(jPanel8);
-        jPanel8.setBounds(0, 0, 1000, 620);
+        jPanel8.setBounds(0, 0, 1000, 600);
 
-        setSize(new java.awt.Dimension(1016, 656));
+        setSize(new java.awt.Dimension(1016, 638));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -423,7 +449,7 @@ public class frmMain extends javax.swing.JFrame {
         // TODO add your handling code here:
         int baris = Hasil.getSelectedRow();
         if(baris != -1){
-            No.setText(Hasil.getValueAt(baris, 0).toString());
+            NOP.setText(Hasil.getValueAt(baris, 0).toString());
             Nama.setText(Hasil.getValueAt(baris, 1).toString());
             if("Ayam Goreng".equals(Hasil.getValueAt(baris, 2).toString())){
                 Makanan.getSelectedItem();
@@ -450,7 +476,7 @@ public class frmMain extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_HasilMouseClicked
 
-    private void Save1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Save1ActionPerformed
+    private void SaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveActionPerformed
         
             String makan = Makanan.getSelectedItem().toString();
             String minum = Minuman.getSelectedItem().toString();
@@ -466,23 +492,22 @@ public class frmMain extends javax.swing.JFrame {
             }if (Minuman.getSelectedItem() == "Es Jeruk"){
             };
 
-            String SQL = "INSERT INTO `t_transaksi`(`NOP`, `nama`, `makanan`, `minuman`, `total`)"
-            + "VALUES('"+No.getText()+"','"+Nama.getText()+"','"+makan+"','"
+            String SQL = "INSERT INTO t_transaksi VALUES('"+NOP.getText()+"','"+Tgl.getText()+"','"+Kasir.getText()+"','"+Nama.getText()+"','"+makan+"','"
             +minum+"','"+Total.getText()+"')";
             int status = KoneksiDB.execute(SQL);
             if (status == 1){
-                JOptionPane.showMessageDialog(this, "Data Berhasil DItambah", "Sukses", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Data Berhasil Ditambah", "Sukses", JOptionPane.INFORMATION_MESSAGE);
                 selectData();
             }else{
                 JOptionPane.showMessageDialog(this, "Data gagal ditambah", "Sukses", JOptionPane.WARNING_MESSAGE);
             }
 
         // TODO add your handling code here:
-    }//GEN-LAST:event_Save1ActionPerformed
+    }//GEN-LAST:event_SaveActionPerformed
 
     private void ClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClearActionPerformed
         Nama.setText("");
-        No.setText("");
+        NOP.setText("");
         Makanan.getSelectedItem();
         Minuman.getSelectedItem();
         Mkn.setText("");
@@ -518,7 +543,7 @@ public class frmMain extends javax.swing.JFrame {
     }//GEN-LAST:event_DeleteActionPerformed
 
     private void printActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printActionPerformed
-        MessageFormat header = new MessageFormat("Pesanan KEDAI MJ");
+        MessageFormat header = new MessageFormat("Pesanan KEDAI BAMBU");
         MessageFormat footer = new MessageFormat("Page (0,number,integer)   ");
 
         try {
@@ -529,9 +554,9 @@ public class frmMain extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_printActionPerformed
 
-    private void NoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoActionPerformed
+    private void NOPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NOPActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_NoActionPerformed
+    }//GEN-LAST:event_NOPActionPerformed
 
     private void NamaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NamaActionPerformed
         // TODO add your handling code here:
@@ -558,9 +583,9 @@ public class frmMain extends javax.swing.JFrame {
     }//GEN-LAST:event_TotalActionPerformed
 
     private void totalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_totalActionPerformed
-        if("".equals(No.getText()) || "".equals(Nama.getText()) || "".equals(Makanan.getSelectedItem())
+        if("".equals(NOP.getText()) || "".equals(Nama.getText()) || "".equals(Makanan.getSelectedItem())
                 || "".equals(Mkn.getText()) || "".equals(Mnm.getText()) || "".equals(Mknttl.getText())
-                || "".equals(Mnmttl.getText()) || "".equals(Minuman.getSelectedItem()) || "".equals(Total.getText())) {
+                || "".equals(Mnmttl.getText()) || "".equals(Minuman.getSelectedItem())) {
             JOptionPane.showMessageDialog(this, "Harap Lengkapi Data", "Error", JOptionPane.WARNING_MESSAGE);
         } else {
 
@@ -587,6 +612,10 @@ public class frmMain extends javax.swing.JFrame {
         dispose();
 // TODO add your handling code here:
     }//GEN-LAST:event_exitActionPerformed
+
+    private void SearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SearchActionPerformed
 
     /**
      * @param args the command line arguments
@@ -618,7 +647,7 @@ public class frmMain extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new frmMain().setVisible(true);
+                new frmMain(null).setVisible(true);
             }
         });
     }
@@ -627,15 +656,18 @@ public class frmMain extends javax.swing.JFrame {
     private javax.swing.JButton Clear;
     private javax.swing.JButton Delete;
     private javax.swing.JTable Hasil;
+    private javax.swing.JLabel Kasir;
     private javax.swing.JComboBox Makanan;
     private javax.swing.JComboBox Minuman;
     private javax.swing.JTextField Mkn;
     private javax.swing.JTextField Mknttl;
     private javax.swing.JTextField Mnm;
     private javax.swing.JTextField Mnmttl;
+    private javax.swing.JTextField NOP;
     private javax.swing.JTextField Nama;
-    private javax.swing.JTextField No;
-    private javax.swing.JButton Save1;
+    private javax.swing.JButton Save;
+    private javax.swing.JButton Search;
+    private javax.swing.JLabel Tgl;
     private javax.swing.JTextField Total;
     private javax.swing.JButton exit;
     private javax.swing.JLabel jLabel10;
@@ -656,6 +688,7 @@ public class frmMain extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -671,15 +704,15 @@ public class frmMain extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel kasir;
+    private com.toedter.calendar.JDateChooser pencarian;
     private javax.swing.JButton print;
     private javax.swing.JButton refresh;
-    private javax.swing.JLabel tanggal;
     private javax.swing.JButton total;
     private javax.swing.JLabel waktu;
     // End of variables declaration//GEN-END:variables
 
     private void selectData() {
-        String kolom[] = {"NOP","nama","makanan","minuman","total"};
+        String kolom[] = {"NOP","tanggal_transaksi","kasir","nama","makanan","minuman","total"};
         DefaultTableModel dtm  = new DefaultTableModel(null, kolom);
         String SQL = "SELECT * FROM t_transaksi";
         ResultSet rs = KoneksiDB.executeQuery(SQL);
@@ -687,11 +720,13 @@ public class frmMain extends javax.swing.JFrame {
         try {
             while (rs.next()) {
                 String NOP = rs.getString(1);
-                String nama= rs.getString(2);
-                String makanan = rs.getString(3);
-                String minuman = rs.getString(4);
-                String total = rs.getString(5);
-                String data[] = {NOP,nama,makanan,minuman,total};
+                String tanggal_transaksi = rs.getString(2);
+                String kasir = rs.getString(3);
+                String nama= rs.getString(4);
+                String makanan = rs.getString(5);
+                String minuman = rs.getString(6);
+                String total = rs.getString(7);
+                String data[] = {NOP,tanggal_transaksi,kasir,nama,makanan,minuman,total};
                 dtm.addRow(data);
             }
         } catch (SQLException ex) {
@@ -703,7 +738,7 @@ public class frmMain extends javax.swing.JFrame {
     private void setTanggal() {
         java.util.Date skrg = new java.util.Date() ;
         java.text.SimpleDateFormat kal = new java.text.SimpleDateFormat("dd/MM/yyyy") ;
-        tanggal.setText(kal.format(skrg));
+        Tgl.setText(kal.format(skrg));
     }
 
     private void setJam() {

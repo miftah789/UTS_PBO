@@ -35,6 +35,8 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        jRadioButton1 = new javax.swing.JRadioButton();
         jPanel4 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -46,6 +48,8 @@ public class Login extends javax.swing.JFrame {
         Exit = new javax.swing.JButton();
         SignIn = new javax.swing.JButton();
 
+        jRadioButton1.setText("jRadioButton1");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
@@ -55,10 +59,10 @@ public class Login extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(0, 204, 204));
         jPanel2.setLayout(null);
 
-        jLabel1.setFont(new java.awt.Font("Viner Hand ITC", 1, 48)); // NOI18N
-        jLabel1.setText("KEDAI MJ");
+        jLabel1.setFont(new java.awt.Font("Viner Hand ITC", 1, 36)); // NOI18N
+        jLabel1.setText("KEDAI BAMBU");
         jPanel2.add(jLabel1);
-        jLabel1.setBounds(50, 10, 320, 60);
+        jLabel1.setBounds(40, 10, 330, 60);
 
         jPanel4.add(jPanel2);
         jPanel2.setBounds(10, 10, 380, 70);
@@ -138,7 +142,8 @@ public class Login extends javax.swing.JFrame {
             ps.setString(2, Passw.getText());
             ResultSet result = ps.executeQuery();
             if (result.next()) {
-                new frmMain().show();
+                String mj = Name.getText();
+                new frmMain(mj).setVisible(true);
                 this.dispose();
             } else {
                 JOptionPane.showMessageDialog(rootPane, "Salah!");
@@ -194,11 +199,13 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JTextField Name;
     private javax.swing.JPasswordField Passw;
     private javax.swing.JButton SignIn;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JRadioButton jRadioButton1;
     // End of variables declaration//GEN-END:variables
 }
